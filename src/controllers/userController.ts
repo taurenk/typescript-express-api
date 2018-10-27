@@ -1,7 +1,6 @@
 import { Response, Router, Request } from 'express';
-
-import {getManager} from 'typeorm';
-import {User} from '../entities/user';
+import { getRepository } from 'typeorm';
+import { User } from '../entities/user';
 
 class UserController {
 
@@ -17,8 +16,8 @@ class UserController {
   }
 
   public getAllUsers = async (req: Request, res: Response): Promise<Response> => {
-    const entityManager = getManager(); // you can also get it via getConnection().manager
-    const users = await entityManager.find(User);
+    const userRepo = getRepository(User);
+    const users = await userRepo.find();
     return res.status(200).json({ users });
   }
 

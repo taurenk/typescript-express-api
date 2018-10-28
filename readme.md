@@ -1,5 +1,5 @@
 # Typescript API Server
-Expirmenting with Typescript + Express + typeorm.
+A simple API built with Typescript, Express and Typeorm using a Model-Controller + Repository design pattern.
 
 Todo:
   - DB Migrations

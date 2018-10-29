@@ -1,4 +1,3 @@
-
 import express = require("express");
 import {createConnection, Connection} from "typeorm";
 import testController from './controllers/testController';

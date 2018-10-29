@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  mysql-db:
+    image: "mysql:5"
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=test 
+      - MYSQL_DATABASE=test
+  
+  api:
+    image: "taurenk/typescript-api:1.0.0"
+    ports:
+      - "1337:1337"
+    links:
+      - mysql-db
+    depends_on:
+      - mysql-db
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 2
+        window: 30s
